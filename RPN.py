@@ -2,13 +2,13 @@ class Stack:
     def Append(list, *args): # Last In First Out
         for i in args: list.append(i)
 
-    def Pop(list, count: int = 1): # Removes first value in Stack
+    def Pop(list, count:int = 1): # Removes first value in Stack
         for i in range(count): list.pop(0)
 
-    def PopPos(list, position: int = 0): # pops a specific index item in Stack
+    def PopPosition(list, position:int = 0): # pops a specific index item in Stack
         list.pop(position)
 
-    def PopRet(list): # Pops and removes the first item from the Stack
+    def PopReturn(list): # Pops and removes the first item from the Stack
         item = list.pop(0)
         return item
 
@@ -19,17 +19,17 @@ class Queue:
     def Enqueue(list, *args): # First in First out
         for i in args: list.append(i)
 
-    def ForceQueue(list, position: int = 0 ,*args): # Forces an item into a Specific index in Queue
+    def ForceQueue(list, position:int = 0 ,*args): # Forces an item into a Specific index in Queue
         for i in args: list.insert(position,i)
 
-    def Dequeue(list, count: int = 1): # Removes last value in Queue
+    def Dequeue(list, count:int = 1): # Removes last value in Queue
         for i in range(count): list.pop()
 
     def Rip(list): # Pops and removes the last item from the Stack
         item = list.pop(len(list)-1)
         return item
     
-    def RipPos(list, position: int = 0): # Pops and removes the item at a specific index from the Stack
+    def RipPosition(list, position:int = 0): # Pops and removes the item at a specific index from the Stack
         item = list.pop(position)
         return item
 
