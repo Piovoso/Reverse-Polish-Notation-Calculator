@@ -19,7 +19,7 @@ class calculator:
 
         except: # String Conversion exception, Mathematical operator
             if len(queue) <= len(stack): # Checks if it is the Power operator **
-                char = str(Stack.PopRet(stack)) + char 
+                char = str(Stack.PopReturn(stack)) + char 
             Stack.Append(stack, char)
 
     def ReversePolishNotation(stack, queue): # Actual Calculating
@@ -28,34 +28,34 @@ class calculator:
 
             if '**' in stack: # Power, following code is the exact same for other mathematical operators
                 index = stack.index('**') # Indexes the Operator (single digit)
-                math = int(Queue.RipPos(queue, index)) ** int(Queue.RipPos(queue, index)) # Does the calculation by Riping out the Corresponding values in the position of Operator
+                math = int(Queue.RipPosition(queue, index)) ** int(Queue.RipPosition(queue, index)) # Does the calculation by Riping out the Corresponding values in the position of Operator
                 Queue.ForceQueue(queue, index, math) # Forces the math value back into it's index value in the queue
-                Stack.PopPos(stack, index) # Removes the Operator from the stack.
+                Stack.PopPosition(stack, index) # Removes the Operator from the stack.
 
             elif '/' in stack or '*' in stack: # Equal Mathematical operators
                 if '*' in stack and stack.index('*') < stack.index('/'): # Checks which one comes first in the stack.
                     index = stack.index('*') # following in stated on lines 30 - 33
-                    math = int(Queue.RipPos(queue, index)) * int(Queue.RipPos(queue, index))
+                    math = int(Queue.RipPosition(queue, index)) * int(Queue.RipPosition(queue, index))
                     Queue.ForceQueue(queue, index, math)
-                    Stack.PopPos(stack, index)
+                    Stack.PopPosition(stack, index)
                 else:
                     index = stack.index('/') # following in stated on lines 30 - 33
-                    math = int(Queue.RipPos(queue, index)) / int(Queue.RipPos(queue, index))
+                    math = int(Queue.RipPosition(queue, index)) / int(Queue.RipPosition(queue, index))
                     Queue.ForceQueue(queue, index, math)
-                    Stack.PopPos(stack, index)
+                    Stack.PopPosition(stack, index)
 
             elif '+' in stack or '-' in stack: # Equal Mathematical operators
                 if '+' in stack and stack.index('+') < stack.index('-'): # Checks which one comes first in the stack.
                     index = stack.index('+') # following in stated on lines 30 - 33
-                    math = int(Queue.RipPos(queue, index)) + int(Queue.RipPos(queue, index))
+                    math = int(Queue.RipPosition(queue, index)) + int(Queue.RipPosition(queue, index))
                     Queue.ForceQueue(queue, index, math)
-                    Stack.PopPos(stack, index)
+                    Stack.PopPosition(stack, index)
 
                 else: 
                     index = stack.index('-') # following in stated on lines 30 - 33
-                    math = int(Queue.RipPos(queue, index)) - int(Queue.RipPos(queue, index))
+                    math = int(Queue.RipPosition(queue, index)) - int(Queue.RipPosition(queue, index))
                     Queue.ForceQueue(queue, index, math)
-                    Stack.PopPos(stack, index)
+                    Stack.PopPosition(stack, index)
 
 UserInput = input('Math equation: ')
 new = calculator(UserInput)
