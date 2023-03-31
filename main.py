@@ -4,6 +4,7 @@ class calculator:
     def __init__(self, expression): # initialising Calculator
         QueueList = []
         StackList = []
+        BracketsList = []
         for char in expression: # Seperating Expression to Characters for processing
             calculator.ShuntingYard(char, StackList, QueueList) # Passing Required Items to ShuntingYard function
 
@@ -18,9 +19,12 @@ class calculator:
             Queue.Enqueue(queue, value) # Adds the character value into the Queue
 
         except: # String Conversion exception, Mathematical operator
-            if len(queue) <= len(stack): # Checks if it is the Power operator **
+            if char == '(':
+                if BracketsList >= 1 and char == ')':
+                    BracketsList.append(char)
+            elif len(queue) <= len(stack): # Checks if it is the Power operator **
                 char = str(Stack.PopReturn(stack)) + char 
-            Stack.Append(stack, char)
+                Stack.Append(stack, char)
 
     def ReversePolishNotation(stack, queue): # Actual Calculating
         while True:
